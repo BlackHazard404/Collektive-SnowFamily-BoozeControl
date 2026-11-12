@@ -1,0 +1,53 @@
+incarnation: collektive
+
+network-model:
+  type: ConnectWithinDistance
+  parameters: [2]
+
+_pool: &program
+  - time-distribution: 0.2
+    type: Event
+    actions:
+      - type: RunCollektiveProgram
+        parameters: [snowFamily.SnowballKt.snowball]
+
+deployments:
+  - type: Rectangle
+    parameters: [250, 0, 0, 20, 20]
+    contents:
+      - molecule: opinion
+        concentration: 1
+      - molecule: observed_turns
+        concentration: 0
+      - molecule: max_votes
+        concentration: 0
+      - molecule: terminated
+        concentration: false
+    programs:
+      - *program
+  - type: Rectangle
+    parameters: [120, 0, 0, 20, 20 ]
+    contents:
+      - molecule: opinion
+        concentration: 0
+      - molecule: observed_turns
+        concentration: 0
+      - molecule: max_votes
+        concentration: 0
+      - molecule: terminated
+        concentration: false
+    programs:
+      - *program
+  - type: Rectangle
+    parameters: [80, 0, 0, 20, 20 ]
+    contents:
+      - molecule: opinion
+        concentration: -1
+      - molecule: observed_turns
+        concentration: 0
+      - molecule: max_votes
+        concentration: 0
+      - molecule: terminated
+        concentration: false
+    programs:
+      - *program

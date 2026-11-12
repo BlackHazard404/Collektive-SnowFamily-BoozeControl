@@ -1,0 +1,35 @@
+incarnation: collektive
+
+network-model:
+  type: ConnectWithinDistance
+  parameters: [3]
+
+_pool: &program
+  - time-distribution: 0.2
+    type: Event
+    actions:
+      - type: RunCollektiveProgram
+        parameters: [snowFamily.SlushKt.slush]
+
+deployments:
+  - type: Rectangle
+    parameters: [250, 0, 0, 20, 20]
+    contents:
+      - molecule: opinion
+        concentration: 1
+    programs:
+      - *program
+  - type: Rectangle
+    parameters: [220, 0, 0, 20, 20 ]
+    contents:
+      - molecule: opinion
+        concentration: 0
+    programs:
+      - *program
+  - type: Rectangle
+    parameters: [80, 0, 0, 20, 20 ]
+    contents:
+      - molecule: opinion
+        concentration: -1
+    programs:
+      - *program

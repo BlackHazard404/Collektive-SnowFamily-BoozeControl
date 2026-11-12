@@ -1,0 +1,57 @@
+incarnation: collektive
+
+network-model:
+  type: ConnectWithinDistance
+  parameters: [3]
+
+_pool: &program
+  - time-distribution: 0.2
+    type: Event
+    actions:
+      - type: RunCollektiveProgram
+        parameters: [boozeControl.ContendKt.contendedFinder]
+
+deployments:
+  - type: Rectangle
+    parameters: [550, 0, 0, 30, 30]
+    contents:
+      - molecule: opinion
+        concentration: 1
+      - molecule: observed_turns
+        concentration: 0
+      - molecule: nMajZero
+        concentration: 0
+      - molecule: nMajOne
+        concentration: 0
+      - molecule: terminated
+        concentration: false
+    programs:
+      - *program
+  - type: Rectangle
+    parameters: [420, 0, 0, 30, 30 ]
+    contents:
+      - molecule: opinion
+        concentration: 0
+      - molecule: nMajZero
+        concentration: 0
+      - molecule: nMajOne
+        concentration: 0
+      - molecule: terminated
+        concentration: false
+    programs:
+      - *program
+  - type: Rectangle
+    parameters: [80, 0, 0, 20, 20 ]
+    contents:
+      - molecule: opinion
+        concentration: -1
+      - molecule: observed_turns
+        concentration: 0
+      - molecule: nMajZero
+        concentration: 0
+      - molecule: nMajOne
+        concentration: 0
+      - molecule: terminated
+        concentration: false
+    programs:
+      - *program
