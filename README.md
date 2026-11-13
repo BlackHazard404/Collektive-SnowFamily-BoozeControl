@@ -1,3 +1,4 @@
+# CLONED FROM [Collektive Experiments Bootstrap](https://github.com/Collektive/collektive-experiments-bootstrap)
 # Snow Family implementation and possible applications
 This repository shows a possible implementation of the Snow Family protocols in the Alchemist environment.
 The Slush, Snowflake, Snowball and Blizzard can be run through the command 
